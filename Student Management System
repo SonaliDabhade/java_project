@@ -1,0 +1,40 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+// 1. The main driver class
+public class StudentManagementSystem {
+    public static void main(String[] args) {
+        // Run the GUI construction on the Event Dispatch Thread (EDT)
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Student Management System");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(500, 400);
+            
+            // Instantiate and add the student panel to the frame
+            StudentPanel studentPanel = new StudentPanel();
+            frame.add(studentPanel);
+            
+            frame.setLocationRelativeTo(null); // Center window on screen
+            frame.setVisible(true);
+        });
+    }
+}
+
+// 2. The missing component class implementation
+class StudentPanel extends JPanel {
+    public StudentPanel() {
+        setLayout(new BorderLayout());
+        
+        // Example UI components
+        JLabel titleLabel = new JLabel("Student Records Management", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        
+        JButton actionButton = new JButton("Add New Student");
+        
+        // Add components to this panel
+        add(titleLabel, BorderLayout.NORTH);
+        add(actionButton, BorderLayout.CENTER);
+    }
+}
